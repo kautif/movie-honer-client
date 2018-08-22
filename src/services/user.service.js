@@ -1,0 +1,25 @@
+// import... config from 'config' 
+	// I think example is using gitignore on this file.
+import {authHeader} from '../helpers';
+
+export const userService = {
+	login
+};
+
+function login(username, password){
+	const requestOptions = {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify({username, password});
+	};
+
+	return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+		.then(handleResponse)
+		.then(user => {
+			if(user.token){
+				localStorage.setItem('user', JSON.stringify(user));
+			}
+
+			return user;
+		});
+}
