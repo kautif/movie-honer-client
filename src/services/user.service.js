@@ -3,7 +3,8 @@
 import {authHeader} from '../helpers';
 
 export const userService = {
-	login
+	login,
+	logout
 };
 
 function login(username, password){
@@ -22,4 +23,18 @@ function login(username, password){
 
 			return user;
 		});
+}
+
+function logout(){
+	localStorage.removeItem('user');
+}
+
+function signup(user){
+	const requestOptions = {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify(user);
+	};
+
+	return fetch(`${config.apiUrl}/users/signup`, requestOptions).then(handleResponse);
 }

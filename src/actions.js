@@ -42,9 +42,8 @@ import { history } from '../helpers';
 		const LOGOUT = 'LOGOUT';
 
 		function logout(){
-			return {
-				type: LOGOUT
-			};
+			userService.logout();
+			return {type: userConstants.LOGOUT};
 		}
 
 		function logoutAsync(){
@@ -57,14 +56,32 @@ import { history } from '../helpers';
 
 		function signup(){
 			return {
-				type: SIGN_UP
+				type: SIGNUP
 			};
 		}
 
 		function signupAsync(){
 			return dispatch => {
-				
-			}
+				dispatch(request(user));
+
+				userService.signupAsync(user)
+					.then(
+						user => {
+							dispatch(success());
+							history.push('/login');
+							dispatch(alertActions.success('Successfully registered'));
+						},
+
+						error => {
+							dispatch(failure(error.toString()));
+							dispatch(alertActions.error(error.toString()));
+						}
+					);
+			};
+
+			function request(user){return {type: userConstants.SIGNUP_REQUEST, user}}
+			function success(user){return {type: userConstants.SIGNUP_SUCCESS, user}}
+			function failure(error){return {type: userConstants.SIGNUP_FAILURE, error}}
 		}
 	// Submit search action
 		const SEARCH = 'SEARCH';
@@ -75,10 +92,34 @@ import { history } from '../helpers';
 			};
 		}
 
+		// Missing a parameter?
 		function searchAsync(){
+			let category;
+			let decade;
+			let year;
+			let quality;
+			let apiKey = '08eba60ea81f9e9cf342c7fa3df07bb6';
 			return dispatch => {
-				
+				function getData(url = ``, data = {}){
+					return fetch(url, {
+						method: "GET",
+						mode: "cors",
+						cache: "no-cache",
+						credentials: "same-origin",
+						headers: {
+							"Content-Type": "applicaiton/json; charset=utf-8"
+						},
+						redirect: "follow",
+						referrer: "no-referrer",
+						body: JSON.stringify(data)
+					})
+					.then(response => response.json());
+				}
 			}
+
+			getData(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
+				.then(data => console.log(JSON.stringify(data)))
+				.catch(error => console.error(error));
 		}
 	// Add movie action
 		const ADD_MOVIE = 'ADD_MOVIE';
