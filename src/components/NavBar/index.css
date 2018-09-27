@@ -1,0 +1,18 @@
+.navbar {
+  background-color: #66bb6a;
+  padding: 10px 0;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 0 10px;
+  font-family: "Raleway", monospace;
+  font-weight: bold;
+  background-color: #ffea00;
+  border: none;
+  cursor: pointer;
+}

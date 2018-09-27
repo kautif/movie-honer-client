@@ -1,0 +1,47 @@
+.search-page {
+  background-color: #709cc9;
+}
+
+fieldset {
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-group label {
+  font-size: 1.5em;
+  font-family: "Raleway", monospace;
+}
+
+.form-group select {
+  width: 150px;
+  font-size: 1.25em;
+  margin-bottom: 20px;
+  font-family: "Raleway", monospace;
+}
+
+.form-group input {
+  width: 50%;
+  font-size: 1.25em;
+  margin-bottom: 20px;
+  font-family: "Raleway", monospace;
+}
+
+.form-group #year {
+  width: 150px;
+}
+
+.submit-search {
+  padding: 15px 10px;
+  font-weight: bold;
+  font-family: "Raleway", monospace;
+  background-color: #ffea00;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

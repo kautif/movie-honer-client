@@ -1,0 +1,11 @@
+.dashboard {
+  background-color: #709cc9;
+  padding-bottom: 20px;
+}
+
+.dashboard h2 {
+  margin-top: 0;
+  padding-top: 20px;
+  text-align: center;
+  font-family: "Raleway", monospace;
+}

@@ -1,0 +1,29 @@
+/* 
+    Movie items are not lining up due to flexbox setup.
+    Consider looking at grid layout.
+*/
+
+.results-page {
+  background-color: #709cc9;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results-page h2 {
+  margin-top: 0;
+  padding-top: 20px;
+  text-align: center;
+  font-family: "Raleway", monospace;
+}
+
+.submit-search {
+  font-family: "Raleway", monospace;
+  border-radius: 8px;
+}

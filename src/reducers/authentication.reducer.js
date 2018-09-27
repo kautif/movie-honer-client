@@ -1,25 +1,32 @@
-import {userConstants} from '../constants/constants';
+import { userConstants, navConstants } from "../constants";
 
-let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? {loggedIn: true, user} : {};
+const initialState = { user: undefined, working: false };
 
-export function authentication(state = initialState, action) {
-	switch (action.type) {
-		case userConstants.LOGIN_REQUEST:
-			return {
-				loggedIn: true,
-				user: action.user
-			};
-		case userConstants.LOGIN_SUCCESS:
-			return {
-				loggedIn: true,
-				user: action.user
-			};
-		case userConstants.LOGIN_FAILURE:
-			return {};
-		case userConstants.LOGOUT:
-			return {};
-		default:
-			return state
-	}
+export default function authentication(state = initialState, action) {
+  switch (action.type) {
+    case userConstants.LOGIN_REQUEST:
+    case userConstants.SIGNUP_REQUEST:
+    case userConstants.GETUSER_REQUEST:
+      return {
+        ...state,
+        error: null,
+        working: true
+      };
+    case userConstants.LOGIN_SUCCESS:
+    case userConstants.SIGNUP_SUCCESS:
+    case userConstants.GETUSER_SUCCESS:
+      return {
+        user: action.user
+      };
+    case userConstants.LOGIN_FAILURE:
+    case userConstants.SIGNUP_FAILURE:
+      return { ...state, error: action.error, working: false };
+    case userConstants.GETUSER_FAILURE:
+      return { ...state, error: null, working: false };
+    case userConstants.LOGOUT:
+      return initialState;
+    case navConstants.NAVIGATE:
+      return { ...state, error: null };
+  }
+  return state;
 }

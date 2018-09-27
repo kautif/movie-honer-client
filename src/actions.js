@@ -1,174 +1,175 @@
-import { userConstants} from '../constants';
-import { userService } from '../services';
-import { alertActions } from './';
-import { history } from '../helpers';
-
+import { userConstants, movieConstants, navConstants } from "./constants";
+import {
+  findMovies,
+  login,
+  logout as doLogout,
+  signup,
+  getUser,
+  addMovie,
+  deleteMovie
+} from "./api";
 
 // Need synchronous and asynchronous versions of the actions below
-	// (Why do we need both a synchronous and asynchronous version)
-		// Asynchronous version making api call
-		// Synchronous is what's updating the internal state
-	// Login action
-		const LOGIN = 'LOGIN';
+// (Why do we need both a synchronous and asynchronous version)
+// Asynchronous version making api call
+// Synchronous is what's updating the internal state
 
-		function login(){
-			return {
-				type: LOGIN
-			};
-		}
+export function navigate(page) {
+  return { type: navConstants.NAVIGATE, page };
+}
 
-		function loginAsync(username, password){
-			return dispatch => {
-				dispatch(request({username}));
+export function loginAsync(username, password) {
+  return dispatch => {
+    dispatch(request());
 
-				userService.login(username, password)
-					.then(
-						user => {
-							dispatch(success(user));
-							history.push('/');
-						},
-						error => {
-							dispatch(failure(error.toString()));
-							dispatch(alertActions.error(error.toString()));
-						}
-					);
-			};
+    login(username, password)
+      .then(user => {
+        dispatch(success(user));
+      })
+      .catch(error => {
+        dispatch(failure(error.message));
+        // dispatch(alertActions.error(error.message));
+      });
+  };
 
-			function request(user) {return {type: userConstants.LOGIN_REQUEST, user}}
-			function success(user) {return {type: userConstants.LOGIN_SUCCESS, user}}
-			function failure(user) {return {type: userConstants.LOGIN_FAILURE, error}}
-		}
-	// Logout action
-		const LOGOUT = 'LOGOUT';
+  function request() {
+    return { type: userConstants.LOGIN_REQUEST };
+  }
+  function success(user) {
+    return { type: userConstants.LOGIN_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.LOGIN_FAILURE, error };
+  }
+}
+// Logout action
 
-		function logout(){
-			userService.logout();
-			return {type: userConstants.LOGOUT};
-		}
+export function logout() {
+  doLogout();
+  return { type: userConstants.LOGOUT };
+}
 
-		function logoutAsync(){
-			return dispatch => {
-				
-			}
-		}
-	// Signup/register action
-		const SIGN_UP = 'SIGN_UP';
+// Signup/register action
 
-		function signup(){
-			return {
-				type: SIGNUP
-			};
-		}
+export function signupAsync(email, password) {
+  return dispatch => {
+    dispatch(request());
 
-		function signupAsync(){
-			return dispatch => {
-				dispatch(request(user));
+    signup(email, password)
+      .then(user => {
+        dispatch(success(user));
+      })
+      .catch(error => {
+        dispatch(failure(error.message));
+      });
+  };
 
-				userService.signupAsync(user)
-					.then(
-						user => {
-							dispatch(success());
-							history.push('/login');
-							dispatch(alertActions.success('Successfully registered'));
-						},
+  function request() {
+    return { type: userConstants.SIGNUP_REQUEST };
+  }
+  function success(user) {
+    return { type: userConstants.SIGNUP_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.SIGNUP_FAILURE, error };
+  }
+}
 
-						error => {
-							dispatch(failure(error.toString()));
-							dispatch(alertActions.error(error.toString()));
-						}
-					);
-			};
+export function getUserAsync() {
+  return dispatch => {
+    dispatch(request());
 
-			function request(user){return {type: userConstants.SIGNUP_REQUEST, user}}
-			function success(user){return {type: userConstants.SIGNUP_SUCCESS, user}}
-			function failure(error){return {type: userConstants.SIGNUP_FAILURE, error}}
-		}
-	// Submit search action
-		const SEARCH = 'SEARCH';
+    getUser()
+      .then(user => {
+        dispatch(success(user));
+      })
+      .catch(error => {
+        dispatch(failure(error.message));
+      });
+  };
 
-		function search(){
-			return {
-				type: SEARCH
-			};
-		}
+  function request() {
+    return { type: userConstants.GETUSER_REQUEST };
+  }
+  function success(user) {
+    return { type: userConstants.GETUSER_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.GETUSER_FAILURE, error };
+  }
+}
 
-		// Missing a parameter?
-		function searchAsync(){
-			let category;
-			let decade;
-			let year;
-			let quality;
-			let apiKey = '08eba60ea81f9e9cf342c7fa3df07bb6';
-			return dispatch => {
-				function getData(url = ``, data = {}){
-					return fetch(url, {
-						method: "GET",
-						mode: "cors",
-						cache: "no-cache",
-						credentials: "same-origin",
-						headers: {
-							"Content-Type": "applicaiton/json; charset=utf-8"
-						},
-						redirect: "follow",
-						referrer: "no-referrer",
-						body: JSON.stringify(data)
-					})
-					.then(response => response.json());
-				}
-			}
+// Submit search action
 
-			getData(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
-				.then(data => console.log(JSON.stringify(data)))
-				.catch(error => console.error(error));
-		}
-	// Add movie action
-		const ADD_MOVIE = 'ADD_MOVIE';
+// Missing a parameter?
+export function searchAsync(category, year, quality) {
+  // Put apiKey In .env file for server
+  return dispatch => {
+    dispatch(request());
+    findMovies(category, year, quality)
+      .then(movies => {
+        if (movies.length === 0) {
+          dispatch(failure("No results found. Try a different search."));
+        } else {
+          dispatch(success(movies));
+        }
+      })
+      .catch(error => {
+        dispatch(failure(error.message));
+      });
+  };
 
-		function addMovie(){
-			return {
-				type: ADD_MOVIE
-			};
-		}
+  function request() {
+    return { type: movieConstants.SEARCH_MOVIES_REQUEST };
+  }
+  function success(movies) {
+    return { type: movieConstants.SEARCH_MOVIES_SUCCESS, movies };
+  }
+  function failure(error) {
+    return { type: movieConstants.SEARCH_MOVIES_FAILURE, error };
+  }
+}
 
-		function addMovieAsync(){
-			return dispatch => {
-				
-			}
-		}
-	// Follow example: https://github.com/reduxjs/redux-thunk
-		// incrementAsync will be an example of the pattern
-// Start search action 
-	// For each step in search, need an action 
-		// (e.g. Category, Decade, year, quality);
+// Add movie action
+export function addMovieAsync(title, genre, year, quality, image, tmdbID) {
+  return dispatch => {
+    dispatch(request());
+    addMovie(title, genre, year, quality, image, tmdbID)
+      .then(movie => dispatch(success(movie)))
+      .catch(error => dispatch(failure(error.message)));
+  };
 
-		const CATEGORY = 'CATEGORY';
+  function request() {
+    return { type: movieConstants.ADD_MOVIE_REQUEST, tmdbID };
+  }
+  function success(movie) {
+    return { type: movieConstants.ADD_MOVIE_SUCCESS, movie };
+  }
+  function failure(error) {
+    return { type: movieConstants.ADD_MOVIE_FAILURE, error };
+  }
+}
 
-		function searchCategory(){
-			return {
-				type: CATEGORY
-			};
-		}
+export function deleteMovieAsync(id) {
+  return dispatch => {
+    dispatch(request());
+    deleteMovie(id)
+      .then(() => dispatch(success()))
+      .catch(error => dispatch(failure(error.message)));
+  };
 
-		const DECADE = 'DECADE';
-
-		function searchDecade(){
-			return {
-				type: DECADE
-			};
-		}		
-
-		const YEAR = 'YEAR';
-
-		function searchYear(){
-			return {
-				type: YEAR
-			};
-		}
-
-		const QUALITY = 'QUALITY';
-
-		function searchQuality(){
-			return {
-				type: QUALITY
-			};
-		}
+  function request() {
+    return { type: movieConstants.DELETE_MOVIE_REQUEST, id };
+  }
+  function success() {
+    return { type: movieConstants.DELETE_MOVIE_SUCCESS, id };
+  }
+  function failure(error) {
+    return { type: movieConstants.DELETE_MOVIE_FAILURE, error };
+  }
+}
+// Follow example: https://github.com/reduxjs/redux-thunk
+// incrementAsync will be an example of the pattern
+// Start search action
+// For each step in search, need an action
+// (e.g. Category, Decade, year, quality);
