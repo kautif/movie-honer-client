@@ -1,9 +1,33 @@
+@media (max-width: 424px) {
+  #logo {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar button {
+    width: 50%;
+    align-self: center;
+    margin: 10px !important;
+  }
+}
+
 .navbar {
   background-color: #66bb6a;
   padding: 10px 0;
   margin-left: auto;
   display: flex;
   justify-content: flex-end;
+}
+
+#logo {
+  font-family: "Niconne", cursive;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 2em;
 }
 
 .navbar button {

@@ -61,10 +61,10 @@ export class Search extends React.Component {
       (error && <div>{error}</div>);
     return (
       <div className="search-page">
-        <form onSubmit={this.handleSubmit}>
+        <form className="search-form" onSubmit={this.handleSubmit}>
           <fieldset disabled={working}>
             {message}
-            <div className="form-group">
+            <div className="form-group search-group">
               <label className="year" htmlFor="year">
                 Year
               </label>
@@ -79,7 +79,7 @@ export class Search extends React.Component {
                 placeholder="Year"
               />
             </div>
-            <div className="form-group">
+            <div className="form-group search-group">
               <label htmlFor="genre">Genre</label>
               <select
                 id="genre"
@@ -94,7 +94,7 @@ export class Search extends React.Component {
                 ))}
               </select>
             </div>
-            <div className="form-group">
+            <div className="form-group search-group">
               <label htmlFor="quality">Quality</label>
               <select
                 id="quality"

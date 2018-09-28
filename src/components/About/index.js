@@ -4,7 +4,6 @@ export default function About() {
   return (
     <div>
       <div className="about">
-        <h1>Movie Honer</h1>
         <h3>Too many movies to choose from?</h3>
         <h3>We'll help you narrow it down.</h3>
         <p className="filter-intro">Filter by:</p>

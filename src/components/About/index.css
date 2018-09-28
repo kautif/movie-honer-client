@@ -1,3 +1,27 @@
+@media (max-width: 414px) {
+  .about h3 {
+    font-size: 1.5em !important;
+  }
+
+  .filter-flex {
+    flex-direction: column;
+  }
+
+  .about-action {
+    width: 90% !important;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+  .about-action {
+    width: 60% !important;
+  }
+}
+
+body {
+  background-color: #709cc9;
+}
+
 .about {
   background-color: #709cc9;
   color: black;

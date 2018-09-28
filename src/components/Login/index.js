@@ -52,6 +52,7 @@ export class Login extends React.Component {
                 Email
               </label>
               <input
+                className="email"
                 type="text"
                 name="email"
                 value={email}
@@ -65,6 +66,7 @@ export class Login extends React.Component {
                 Password
               </label>
               <input
+                className="password"
                 type="password"
                 name="password"
                 value={password}
@@ -75,10 +77,12 @@ export class Login extends React.Component {
                   <div className="help-block">Password is required</div>
                 )}
             </div>
-            <button>Login</button>
-            <button type="button" onClick={this.props.goToSignup}>
-              Register
-            </button>
+            <div className="button-group">
+              <button>Login</button>
+              <button type="button" onClick={this.props.goToSignup}>
+                Register
+              </button>
+            </div>
           </fieldset>
         </form>
       </div>

@@ -51,6 +51,7 @@ class Signup extends React.Component {
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
+                className="email"
                 type="text"
                 name="email"
                 value={email}
@@ -62,6 +63,7 @@ class Signup extends React.Component {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
+                className="password"
                 type="password"
                 name="password"
                 value={password}
@@ -72,10 +74,12 @@ class Signup extends React.Component {
                   <div className="help-block">Password is required</div>
                 )}
             </div>
-            <button>Sign Up</button>
-            <button type="button" onClick={this.props.goToLogin}>
-              Login
-            </button>
+            <div className="button-group">
+              <button>Sign Up</button>
+              <button type="button" onClick={this.props.goToLogin}>
+                Login
+              </button>
+            </div>
           </fieldset>
         </form>
       </div>

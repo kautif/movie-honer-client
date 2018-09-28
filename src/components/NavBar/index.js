@@ -12,6 +12,9 @@ import "./index.css";
 export function LoggedInNavBar(props) {
   return (
     <React.Fragment>
+      <button id="logo" onClick={props.goToAbout}>
+        Movie Honer
+      </button>
       <button onClick={props.goToMyMovies}>My Movies</button>
       <button onClick={props.goToDiscover}>Discover</button>
       <button onClick={props.logout}>Logout</button>
@@ -39,7 +42,9 @@ const ConnectedLoggedInNavBar = connect(
 export function LoggedOutNavBar(props) {
   return (
     <React.Fragment>
-      <button onClick={props.goToAbout}>Movie Honer</button>
+      <button id="logo" onClick={props.goToAbout}>
+        Movie Honer
+      </button>
       <button onClick={props.goToSignUp}>Sign Up</button>
       <button onClick={props.goToLogin}>Log In</button>
     </React.Fragment>

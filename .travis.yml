@@ -1,5 +1,10 @@
 language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  app: movie-honer-client
+env:
+  - CI=true
