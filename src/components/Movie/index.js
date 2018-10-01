@@ -6,7 +6,10 @@ export default function Movie(props) {
   return (
     <article className="Movie" title={props.movie.title}>
       <div className="Movie-title">{props.movie.title}</div>
-      <img src={props.movie.image || missing_image} />
+      <img
+        alt={props.movie.title + " poster"}
+        src={props.movie.image || missing_image}
+      />
       <button
         disabled={props.disabled}
         className="Movie-button"

@@ -30,7 +30,6 @@ class Signup extends React.Component {
 
     this.setState({ submitted: true });
     const { email, password } = this.state;
-    const { dispatch } = this.props;
     if (email && password) {
       this.props.signup(email, password);
     }

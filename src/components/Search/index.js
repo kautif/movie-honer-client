@@ -41,7 +41,7 @@ export class Search extends React.Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    if (name == "year" && value.length > 4) {
+    if (name === "year" && value.length > 4) {
       return;
     }
     this.setState({ [name]: value });

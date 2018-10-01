@@ -32,6 +32,9 @@ export function App (props) {
 		case navConstants.ABOUT: 
 			page = <About/>
 			break;
+
+		default: 
+			page = 'You should never see this'
 	}
 
 	return (

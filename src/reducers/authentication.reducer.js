@@ -27,6 +27,7 @@ export default function authentication(state = initialState, action) {
       return initialState;
     case navConstants.NAVIGATE:
       return { ...state, error: null };
+    default:
+      return state;
   }
-  return state;
 }

@@ -6,7 +6,7 @@ import "./index.css";
 
 export function generateMovie(saveMovie, savedMovies, movie) {
   const hasMovie =
-    savedMovies.find(movieItem => movieItem.tmdbID == movie.tmdbID) != null;
+    savedMovies.find(movieItem => movieItem.tmdbID === movie.tmdbID) != null;
   return (
     <Movie
       movie={movie}

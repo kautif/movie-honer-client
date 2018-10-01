@@ -1,7 +1,7 @@
 // update host to reflect heroku hosting address
 // update empty string with heroku hosting address
 const host =
-  process.env.REACT_APP_STAGE == "production" ? "" : "http://localhost:8080";
+  process.env.REACT_APP_STAGE === "production" ? "" : "http://localhost:8080";
 
 // where/how do you plugin API parameters
 // con't ***
@@ -48,7 +48,7 @@ export function signup(email, password) {
       if (response.ok) {
         return response.json();
       }
-      if (response.status == 401) {
+      if (response.status === 401) {
         return response.json().then(info => {
           const error = new Error(info.message);
           error.name = "ResponseError";
@@ -60,7 +60,7 @@ export function signup(email, password) {
       throw error;
     })
     .catch(error => {
-      if (error.name == "ResponseError") {
+      if (error.name === "ResponseError") {
         throw error;
       }
       throw new Error("An error occured");
@@ -83,7 +83,7 @@ export function login(email, password) {
       if (response.ok) {
         return response.json();
       }
-      if (response.status == 401) {
+      if (response.status === 401) {
         return response.json().then(info => {
           // error message from the server
           const error = new Error(info.message);
@@ -97,7 +97,7 @@ export function login(email, password) {
       throw error;
     })
     .catch(error => {
-      if (error.name == "ResponseError") {
+      if (error.name === "ResponseError") {
         throw error;
       }
       throw new Error("An error occured");
@@ -124,7 +124,7 @@ export function deleteMovie(id) {
     if (response.ok) {
       return;
     }
-    if (response.status == 401) {
+    if (response.status === 401) {
       throw new Error("Not logged in");
     }
     throw new Error("An error occurred");
@@ -146,7 +146,7 @@ export function addMovie(title, genre, year, quality, image, tmdbID) {
     if (response.ok) {
       return response.json();
     }
-    if (response.status == 401) {
+    if (response.status === 401) {
       throw new Error("Not logged in");
     }
     throw new Error("An error occurred");
