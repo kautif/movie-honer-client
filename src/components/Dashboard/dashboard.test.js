@@ -1,43 +1,54 @@
-import React from 'react';
-import {shallow} from 'enzyme';
+import React from "react";
+import Movie from "../Movie";
+
 // import TestUtils from 'react-addons-test-utils';
-import TestUtils from 'react-dom/test-utils';
+import TestUtils from "react-dom/test-utils";
+import { shallow, mount } from "enzyme";
 
-import Dashboard from './index';
+import { Dashboard } from "./index";
 
-describe('<List />', () => {
-    const seedCards = [];
-    beforeAll(() => {
-        for (let i = 0; i < 10; i++) {
-            seedCards.push(`Card ${i}`);
-        }
+describe("<Dashboard />", () => {
+  it("Renders without crashing", () => {
+    const wrapper = shallow(<Dashboard deleteMovie={() => {}} movies={[]} />);
+  });
+
+  it("Renders movie components", () => {
+    const deleteMovie = jest.fn();
+    const movies = [
+      {
+        id: "1",
+        image: "1.jpg"
+      },
+
+      {
+        id: "2",
+        image: "2.jpg"
+      },
+
+      {
+        id: "3",
+        image: "3.jpg"
+      }
+    ];
+    const wrapper = shallow(
+      <Dashboard deleteMovie={deleteMovie} movies={movies} />
+    );
+    const movieComponents = wrapper.find(Movie);
+    expect(movieComponents).toHaveLength(movies.length);
+    movies.forEach((movie, index) => {
+      const movieInstance = movieComponents.get(index);
+      const props = movieInstance.props;
+      // what is on the left. what is on the right. Where do we see them?
+      // console.log("props.action: ", props.props.action);
+      // console.log("movie: ", movie);
+      expect(props.movie).toBe(movie);
+      expect(movieInstance.key).toBe(movie.id);
+      expect(props.btnText).toBe("Delete Movie");
+      expect(typeof props.action).toBe("function");
+      props.action();
+      expect(deleteMovie).toHaveBeenLastCalledWith(movie.id);
     });
-
-    it('Renders without crashing', () => {
-        const wrapper = shallow(<List title="Foo" />);
-    });
-
-    it('Renders the title', () => {
-        const title = 'Foo';
-        const wrapper = shallow(<List title={title} />);
-        expect(wrapper.contains(<h3>{title}</h3>)).toEqual(true);
-    });
-
-    it('Can add cards to the state', () => {
-        const wrapper = shallow(<List />);
-        const instance = wrapper.instance();
-        seedCards.forEach(instance.addCard);
-        expect(wrapper.state('cards').length).toEqual(seedCards.length);
-    });
-
-    it('Renders the cards', () => {
-        const wrapper = shallow(<List />);
-        const instance = wrapper.instance();
-        seedCards.forEach(instance.addCard);
-        wrapper.update();
-        const cards = wrapper.find('Card');
-        expect(cards.length).toEqual(seedCards.length);
-        const firstCard = cards.first();
-        expect(firstCard.prop('text')).toEqual(seedCards[0]);
-    });
+    expect(deleteMovie).toHaveBeenCalledTimes(movies.length);
+    // console.log(movieComponents.get(0));
+  });
 });

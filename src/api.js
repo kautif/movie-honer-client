@@ -33,7 +33,6 @@ export function getUser() {
 }
 
 export function signup(email, password) {
-  console.log("signing up");
   const url = `${host}/auth/signup`;
   return fetch(url, {
     credentials: "include",

@@ -15,9 +15,15 @@ export function LoggedInNavBar(props) {
       <button id="logo" onClick={props.goToAbout}>
         Movie Honer
       </button>
-      <button onClick={props.goToMyMovies}>My Movies</button>
-      <button onClick={props.goToDiscover}>Discover</button>
-      <button onClick={props.logout}>Logout</button>
+      <button id="myMovies" onClick={props.goToMyMovies}>
+        My Movies
+      </button>
+      <button id="discover" onClick={props.goToDiscover}>
+        Discover
+      </button>
+      <button id="logout" onClick={props.logout}>
+        Logout
+      </button>
     </React.Fragment>
   );
 }
@@ -30,7 +36,7 @@ function mapDispatchToLoggedInProps(dispatch) {
   };
 }
 
-const ConnectedLoggedInNavBar = connect(
+export const ConnectedLoggedInNavBar = connect(
   null,
   mapDispatchToLoggedInProps
 )(LoggedInNavBar);
@@ -45,8 +51,12 @@ export function LoggedOutNavBar(props) {
       <button id="logo" onClick={props.goToAbout}>
         Movie Honer
       </button>
-      <button onClick={props.goToSignUp}>Sign Up</button>
-      <button onClick={props.goToLogin}>Log In</button>
+      <button id="signup" onClick={props.goToSignUp}>
+        Sign Up
+      </button>
+      <button id="login" onClick={props.goToLogin}>
+        Log In
+      </button>
     </React.Fragment>
   );
 }
@@ -59,7 +69,7 @@ function mapDispatchToLoggedOutProps(dispatch) {
   };
 }
 
-const ConnectedLoggedOutNavBar = connect(
+export const ConnectedLoggedOutNavBar = connect(
   null,
   mapDispatchToLoggedOutProps
 )(LoggedOutNavBar);

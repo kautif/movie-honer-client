@@ -18,31 +18,34 @@ export function navigate(page) {
   return { type: navConstants.NAVIGATE, page };
 }
 
-export function loginAsync(username, password) {
-  return dispatch => {
-    dispatch(request());
+export function makeLoginAsync(login) {
+  return function loginAsync(username, password) {
+    return dispatch => {
+      dispatch(request());
 
-    login(username, password)
-      .then(user => {
-        dispatch(success(user));
-      })
-      .catch(error => {
-        dispatch(failure(error.message));
-        // dispatch(alertActions.error(error.message));
-      });
+      login(username, password)
+        .then(user => {
+          dispatch(success(user));
+        })
+        .catch(error => {
+          dispatch(failure(error.message));
+          // dispatch(alertActions.error(error.message));
+        });
+    };
+
+    function request() {
+      return { type: userConstants.LOGIN_REQUEST };
+    }
+    function success(user) {
+      return { type: userConstants.LOGIN_SUCCESS, user };
+    }
+    function failure(error) {
+      return { type: userConstants.LOGIN_FAILURE, error };
+    }
   };
-
-  function request() {
-    return { type: userConstants.LOGIN_REQUEST };
-  }
-  function success(user) {
-    return { type: userConstants.LOGIN_SUCCESS, user };
-  }
-  function failure(error) {
-    return { type: userConstants.LOGIN_FAILURE, error };
-  }
 }
-// Logout action
+
+export const loginAsync = makeLoginAsync(login);
 
 export function logout() {
   doLogout();
@@ -55,7 +58,7 @@ export function signupAsync(email, password) {
   return dispatch => {
     dispatch(request());
 
-    signup(email, password)
+    return signup(email, password)
       .then(user => {
         dispatch(success(user));
       })

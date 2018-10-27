@@ -9,12 +9,16 @@ export function generateMovie(deleteMovie, movie) {
     <Movie
       movie={movie}
       key={movie.id}
-      image={movie.image}
       btnText="Delete Movie"
       action={deleteMovie.bind(null, movie.id)}
     />
   );
 }
+
+// e.g. of tests
+// -- test rnder of dashboard
+// -- test that dashboard renders all movie components
+// (testing that component renders correct sub components)
 
 export function Dashboard(props) {
   const makeMovie = generateMovie.bind(null, props.deleteMovie);

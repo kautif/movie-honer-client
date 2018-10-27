@@ -52,7 +52,7 @@ export class Login extends React.Component {
               </label>
               <input
                 className="email"
-                type="text"
+                type="email"
                 name="email"
                 value={email}
                 onChange={this.handleChange}
@@ -77,7 +77,7 @@ export class Login extends React.Component {
                 )}
             </div>
             <div className="button-group">
-              <button>Login</button>
+              <button type="submit">Login</button>
               <button type="button" onClick={this.props.goToSignup}>
                 Register
               </button>

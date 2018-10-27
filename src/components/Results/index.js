@@ -11,7 +11,6 @@ export function generateMovie(saveMovie, savedMovies, movie) {
     <Movie
       movie={movie}
       key={movie.tmdbID}
-      image={movie.image}
       btnText={hasMovie ? "Movie Saved" : "Save Movie"}
       action={saveMovie.bind(null, movie)}
       disabled={hasMovie}

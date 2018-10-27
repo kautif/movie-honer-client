@@ -6,7 +6,7 @@ import { navConstants } from "../../constants";
 import { signupAsync, navigate } from "../../actions";
 import "./index.css";
 
-class Signup extends React.Component {
+export class Signup extends React.Component {
   constructor(props) {
     super(props);
 
