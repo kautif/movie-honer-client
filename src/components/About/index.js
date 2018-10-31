@@ -6,7 +6,7 @@ export default function About() {
       <div className="about">
         <h3>Too many movies to choose from?</h3>
         <h3>We'll help you narrow it down.</h3>
-        <p className="filter-intro">Filter by:</p>
+        <p className="filter-intro">Sign Up to Filter by:</p>
         <div className="filter-flex">
           <div className="filter-item">
             <p>Year</p>

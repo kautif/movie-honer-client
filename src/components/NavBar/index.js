@@ -51,11 +51,11 @@ export function LoggedOutNavBar(props) {
       <button id="logo" onClick={props.goToAbout}>
         Movie Honer
       </button>
-      <button id="signup" onClick={props.goToSignUp}>
-        Sign Up
-      </button>
       <button id="login" onClick={props.goToLogin}>
         Log In
+      </button>
+      <button id="signup" onClick={props.goToSignUp}>
+        Sign Up
       </button>
     </React.Fragment>
   );

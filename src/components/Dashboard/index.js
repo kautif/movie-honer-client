@@ -23,12 +23,24 @@ export function generateMovie(deleteMovie, movie) {
 export function Dashboard(props) {
   const makeMovie = generateMovie.bind(null, props.deleteMovie);
 
-  return (
-    <div className="dashboard">
-      <h2>My Movies</h2>
-      <div className="movie-list">{props.movies.map(makeMovie)}</div>
-    </div>
-  );
+  if (props.movies.length === 0) {
+    return (
+      <div className="dashboard">
+        <h2>My Movies</h2>
+        <h3>
+          Click on "Discover" at the top-right to find and add movies titles to
+          your list.
+        </h3>
+      </div>
+    );
+  } else {
+    return (
+      <div className="dashboard">
+        <h2>My Movies</h2>
+        <div className="movie-list">{props.movies.map(makeMovie)}</div>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {

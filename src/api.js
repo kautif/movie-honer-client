@@ -54,7 +54,9 @@ export function signup(email, password) {
           throw error;
         });
       }
-      const error = new Error("An error occurred");
+      const error = new Error(
+        "Enter a valid email address and 8 character password"
+      );
       error.name = "ResponseError";
       throw error;
     })
@@ -62,7 +64,7 @@ export function signup(email, password) {
       if (error.name === "ResponseError") {
         throw error;
       }
-      throw new Error("An error occured");
+      throw new Error("Enter a valid email address and 8 character password");
     });
 }
 
