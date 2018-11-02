@@ -13,26 +13,7 @@ describe("<Movie/>", () => {
 
   it("Renders without crashing", () => {
     const wrapper = shallow(<Movie movie={{}} />);
-    // What do I test?
   });
-
-  // Rendering the component
-  // -- Expecting an action property
-  // -- Expecting button text property
-  // -- Expecting disabled property
-
-  // 10:/13/18: How do you access props in test?
-
-  // Test
-  // -- Finding button [X]
-  // -- -- Verify button text
-  // -- -- Verify provided onClick action
-  // -- -- Verify provided disabled prop
-  // -- Verify movie title text [X]
-  // -- Verify image tag [X]
-  // -- -- Verify image src={movie.image} or unavailable if there isn't a working URL
-
-  // 10/13/18: Says can't read title of undefined on line 7 of index.js
 
   it("Renders with appropriate elements", () => {
     const wrapper = shallow(<Movie movie={movie} />);

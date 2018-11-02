@@ -135,18 +135,3 @@ const connectedSearch = connect(
   mapDispatchToProps
 )(Search);
 export default connectedSearch;
-
-// building search will be one component.
-// Results will be another component
-// Dashboard also. Anything user will use.
-
-// 9/13/18
-// mapDispatchToProps and dispatch appropriate action
-// See previous components for examples
-// Create property for search component
-// handlesubmit method. Call with appropriate values
-// Don't do anything with state
-// Compare with Signup and NavBar
-
-// 9/15/18
-// Add image for movies

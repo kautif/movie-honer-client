@@ -18,12 +18,7 @@
   }
 }
 
-body {
-  background-color: #709cc9;
-}
-
 .about {
-  background-color: #709cc9;
   color: black;
   background-repeat: no-repeat;
   background-position: 100% 50%;
@@ -39,15 +34,28 @@ body {
 }
 
 .about h3 {
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   font-family: "Raleway", monospace;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo img {
+  width: 15%;
 }
 
 .filter-flex {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  background-color: #ee332a;
+  color: white;
+  padding-top: 20px;
 }
 
 .filter-item {
@@ -63,14 +71,25 @@ body {
 
 .filter-intro {
   text-align: center;
+  background-color: #ee332a;
+  margin-top: 20px;
+  margin-bottom: 0px !important;
+  padding-top: 20px;
 }
 
 .about p {
   font-size: 1.5em;
   margin: 0px auto 20px auto;
+  color: white;
   font-family: "Raleway", monospace;
 }
 
 .about-action {
-  width: 40%;
+  background-color: #ee332a;
+  margin-top: 0px;
+  padding-bottom: 20px;
+}
+
+.about-action p {
+  width: 46%;
 }

@@ -6,23 +6,10 @@ import { shallow, mount } from "enzyme";
 import { Login } from "./index";
 
 describe("<Login />", () => {
-  // Expect a form
-  // -- Expect text input [X]
-  // -- Expect password input [X]
-  // -- Expect submit button [X]
-  // -- Simulate text being input to both inputs [X]
-  // -- -- Simulate submission on form [X]
-  // -- -- -- Verify that login function was called [X]
-  // ... (jest mock function provided as part of the props). Check that login function on props was called
-  // -- -- -- If form is in invalid state, shouldn't call login function [X]
-  // Expecting another button
-  // -- Has onClick equal to props being passed in for this.props.goToSignup [X]
-
   it("Renders without crashing", () => {
     const wrapper = shallow(
       <Login working={false} login={() => {}} goToSignup={() => {}} />
     );
-    // Must provide all props that component is expecting
   });
 
   it("Renders email input", () => {
@@ -62,7 +49,6 @@ describe("<Login />", () => {
       expect(wrapper.find("input[type='password']").get(0).props.value).toEqual(
         "secret"
       );
-      // console.log("state after expect: ", wrapper.state);
     });
   });
 

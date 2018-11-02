@@ -171,8 +171,3 @@ export function deleteMovieAsync(id) {
     return { type: movieConstants.DELETE_MOVIE_FAILURE, error };
   }
 }
-// Follow example: https://github.com/reduxjs/redux-thunk
-// incrementAsync will be an example of the pattern
-// Start search action
-// For each step in search, need an action
-// (e.g. Category, Decade, year, quality);

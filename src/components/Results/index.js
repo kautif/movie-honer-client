@@ -47,12 +47,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Results);
-
-// 9/15/18
-// Work on Dashboard
-// Will be similar to results page
-// Delete movie instead of adding it
-// maybe state.user.movies to GET user's movies
-// Not state.search.results. That's for search.
-// Deleting movie
-// Takes ID of movie

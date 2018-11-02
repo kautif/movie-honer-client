@@ -1,5 +1,3 @@
-// import... config from 'config' 
-	// I think example is using gitignore on this file.
 import {authHeader} from '../helpers';
 
 export const userService = {

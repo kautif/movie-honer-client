@@ -1,8 +1,3 @@
-// Fake state
-// Mock actions
-// Call reducer with both
-// Verify that returned state is correct
-
 import reducer from "./reducers/index";
 import thunk from "redux-thunk";
 import { userConstants, navConstants, movieConstants } from "./constants";
@@ -12,7 +7,6 @@ const initialState = {
   error: null
 };
 
-// Each initialState in expect are coming from different sources
 describe("authentication reducer", () => {
   it("handles login request", () => {
     const expected = {

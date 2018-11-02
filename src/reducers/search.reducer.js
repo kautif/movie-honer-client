@@ -1,7 +1,4 @@
 import { movieConstants } from "../constants";
-
-// Defining initialState here would be better here for readability
-
 const initialState = { working: false, results: null, error: null };
 
 export default function searchReducer(state = initialState, action) {

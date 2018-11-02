@@ -4,11 +4,6 @@ import { navigate, logout } from "../../actions";
 import { navConstants } from "../../constants";
 import "./index.css";
 
-// props will have functions as properties.
-// Will be used for navigation purposes.
-// logout
-// goToDiscover
-// goToMyMovies
 export function LoggedInNavBar(props) {
   return (
     <React.Fragment>
@@ -41,10 +36,6 @@ export const ConnectedLoggedInNavBar = connect(
   mapDispatchToLoggedInProps
 )(LoggedInNavBar);
 
-// props
-// goToAbout
-// goToSignUp
-// goToLogin
 export function LoggedOutNavBar(props) {
   return (
     <React.Fragment>
@@ -73,7 +64,6 @@ export const ConnectedLoggedOutNavBar = connect(
   null,
   mapDispatchToLoggedOutProps
 )(LoggedOutNavBar);
-// property of loggedIn
 
 export function NavBar(props) {
   return (

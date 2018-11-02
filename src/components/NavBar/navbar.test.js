@@ -11,16 +11,6 @@ import {
   LoggedOutNavBar
 } from "./index";
 
-// Tests
-// -- NavBar
-// -- -- If logged in, should find LoggedInNavBar [/]
-// -- -- -- Shouldn't find LoggedOutNavBar [/]
-// -- -- If logged out, should find LoggedOutNavBar [/]
-// -- -- -- Shouldn't find LoggedInNavBar [/]
-
-// -- LoggedInNavBar/ LoggedOutNavBar
-// -- -- Check that respective functions are passed in to each button's onClick
-
 describe("<NavBar/>", () => {
   it("Renders without crashing", () => {
     const wrapper = shallow(<NavBar />);

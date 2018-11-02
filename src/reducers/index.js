@@ -4,7 +4,6 @@ import searchReducer from "./search.reducer";
 import navReducer from "./nav.reducer";
 
 export default function reducer(state, action) {
-  // console.log(action);
   state = authenticationReducer(state, action);
   state = { ...state };
 

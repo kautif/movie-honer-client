@@ -1,9 +1,3 @@
-// Expecting form [X]
-// -- Expecting elements within: Two selects and number input [X]
-// -- -- Simulate changes in those elements [X]
-// -- -- -- Simulate submission on form [X]
-// -- -- -- -- Expect findMovies prop to be called with current form data (If current form is valid)
-
 import React from "react";
 
 import TestUtils from "react-dom/test-utils";

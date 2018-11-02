@@ -1,7 +1,5 @@
 import React from "react";
 import Movie from "../Movie";
-
-// import TestUtils from 'react-addons-test-utils';
 import TestUtils from "react-dom/test-utils";
 import { shallow, mount } from "enzyme";
 
@@ -38,9 +36,6 @@ describe("<Dashboard />", () => {
     movies.forEach((movie, index) => {
       const movieInstance = movieComponents.get(index);
       const props = movieInstance.props;
-      // what is on the left. what is on the right. Where do we see them?
-      // console.log("props.action: ", props.props.action);
-      // console.log("movie: ", movie);
       expect(props.movie).toBe(movie);
       expect(movieInstance.key).toBe(movie.id);
       expect(props.btnText).toBe("Delete Movie");
@@ -49,6 +44,5 @@ describe("<Dashboard />", () => {
       expect(deleteMovie).toHaveBeenLastCalledWith(movie.id);
     });
     expect(deleteMovie).toHaveBeenCalledTimes(movies.length);
-    // console.log(movieComponents.get(0));
   });
 });

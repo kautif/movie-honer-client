@@ -25,7 +25,6 @@ describe("<Signup />", () => {
         target: { name: "email", value: "someguy@gmail.com" }
       });
       expect(wrapper.state("email")).toEqual("someguy@gmail.com");
-      // console.log("state after expect: ", wrapper.state);
     });
 
     it("Should listen to change event and change state of password input", () => {
@@ -34,7 +33,6 @@ describe("<Signup />", () => {
         target: { name: "password", value: "secret" }
       });
       expect(wrapper.state("password")).toEqual("secret");
-      // console.log("state after expect: ", wrapper.state);
     });
   });
 });

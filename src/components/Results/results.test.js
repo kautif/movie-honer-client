@@ -58,10 +58,6 @@ describe("<Results", () => {
     results.forEach((movie, index) => {
       const movieInstance = movieComponents.get(index);
       const props = movieInstance.props;
-      // what is on the left. what is on the right. Where do we see them?
-      // console.log("props.action: ", props.props.action);
-      // console.log("movie: ", movie);
-      // console.log("PROPS: ", props);
       expect(props.movie).toBe(movie);
       expect(movieInstance.key).toBe(movie.tmdbID);
       expect(props.btnText).toBe(

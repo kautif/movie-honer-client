@@ -1,12 +1,3 @@
-/* 
-    Movie items are not lining up due to flexbox setup.
-    Consider looking at grid layout.
-*/
-
-.results-page {
-  background-color: #709cc9;
-}
-
 .results {
   display: flex;
   flex-wrap: wrap;

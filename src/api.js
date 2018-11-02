@@ -1,12 +1,5 @@
-// update host to reflect heroku hosting address
-// update empty string with heroku hosting address
 const host =
   process.env.REACT_APP_STAGE === "production" ? "" : "http://localhost:8080";
-
-// where/how do you plugin API parameters
-// con't ***
-
-// make http request to api server
 
 export function findMovies(genre, year, quality) {
   genre = encodeURIComponent(genre);
@@ -86,13 +79,11 @@ export function login(email, password) {
       }
       if (response.status === 401) {
         return response.json().then(info => {
-          // error message from the server
           const error = new Error(info.message);
           error.name = "ResponseError";
           throw error;
         });
       }
-      // Not an authentication error
       const error = new Error("An error occurred");
       error.name = "ResponseError";
       throw error;
