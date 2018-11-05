@@ -1,5 +1,5 @@
 const host =
-  process.env.REACT_APP_STAGE === "production" ? "" : "http://localhost:8080";
+  process.env.API_HOST || "http://localhost:8080";
 
 export function findMovies(genre, year, quality) {
   genre = encodeURIComponent(genre);
