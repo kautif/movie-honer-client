@@ -1,6 +1,6 @@
-// const host = process.env.REACT_APP_API_HOST || "http://localhost:8080";
-console.log(process.env);
-const host = "https://movie-honer-api.herokuapp.com";
+const host = process.env.REACT_APP_API_HOST || "http://localhost:8080";
+// console.log(process.env);
+// const host = "https://movie-honer-api.herokuapp.com";
 
 export function findMovies(genre, year, quality) {
   genre = encodeURIComponent(genre);
