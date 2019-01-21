@@ -1,29 +1,3 @@
-@media (max-width: 414px) {
-  .about h3 {
-    font-size: 1.5em !important;
-  }
-
-  .filter-flex {
-    flex-direction: column;
-  }
-
-  .demo p {
-    width: 86%;
-    font-size: 1em;
-  }
-}
-
-@media (min-width: 425px) and (max-width: 768px) {
-  .about-action {
-    width: 60% !important;
-  }
-
-  .demo p {
-    width: 86%;
-    font-size: 1em;
-  }
-}
-
 .about {
   color: black;
   background-repeat: no-repeat;
@@ -107,4 +81,30 @@
   margin-left: auto;
   margin-right: auto;
   line-height: 40px;
+}
+
+@media (max-width: 414px) {
+  .about h3 {
+    font-size: 1.5em !important;
+  }
+
+  .filter-flex {
+    flex-direction: column;
+  }
+
+  .demo p {
+    width: 86%;
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+  .about-action {
+    width: 60% !important;
+  }
+
+  .demo p {
+    width: 86%;
+    font-size: 1em;
+  }
 }
