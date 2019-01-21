@@ -7,10 +7,6 @@
     flex-direction: column;
   }
 
-  .about-action {
-    width: 90% !important;
-  }
-
   .demo p {
     width: 86%;
     font-size: 1em;
@@ -101,7 +97,7 @@
 }
 
 .about-action p {
-  width: 46%;
+  width: 81%;
 }
 
 .demo p {
