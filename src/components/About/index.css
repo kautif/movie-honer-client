@@ -10,11 +10,21 @@
   .about-action {
     width: 90% !important;
   }
+
+  .demo p {
+    width: 86%;
+    font-size: 1em;
+  }
 }
 
 @media (min-width: 425px) and (max-width: 768px) {
   .about-action {
     width: 60% !important;
+  }
+
+  .demo p {
+    width: 86%;
+    font-size: 1em;
   }
 }
 
