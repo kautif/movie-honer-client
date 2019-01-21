@@ -9,11 +9,6 @@ import {
   deleteMovie
 } from "./api";
 
-// Need synchronous and asynchronous versions of the actions below
-// (Why do we need both a synchronous and asynchronous version)
-// Asynchronous version making api call
-// Synchronous is what's updating the internal state
-
 export function navigate(page) {
   return { type: navConstants.NAVIGATE, page };
 }

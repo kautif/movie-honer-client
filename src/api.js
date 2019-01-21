@@ -145,3 +145,7 @@ export function addMovie(title, genre, year, quality, image, tmdbID) {
     throw new Error("An error occurred");
   });
 }
+
+// cors because server and client have different hosts
+// Include credentials because authentication state is maintained with cookies
+// server will not parse stringified json body if content type is not set

@@ -58,3 +58,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(App);
+
+// Page property on redux state is used to determine which component should be rendered 
+// below the nav bar
